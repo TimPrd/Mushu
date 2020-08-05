@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :mushu, Mushu.Repo,
   username: "postgres",
-  password: "docker",
+  password: "postgres",
   database: "mushu_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
