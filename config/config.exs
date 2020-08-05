@@ -17,6 +17,11 @@ config :mushu, MushuWeb.Endpoint,
   render_errors: [view: MushuWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Mushu.PubSub, adapter: Phoenix.PubSub.PG2]
 
+# Pow configuration
+config :mushu, :pow,
+  user: Mushu.Users.User,
+  repo: Mushu.Repo
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

@@ -8,7 +8,7 @@ defmodule Mushu.Valuables.File do
     field :name, :string
     field :path, :string
     field :tags, {:array, :string}
-
+    belongs_to :user, Mushu.Users.User
     timestamps()
   end
 

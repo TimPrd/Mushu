@@ -7,12 +7,14 @@ defmodule MushuWeb.FileController do
   action_fallback MushuWeb.FallbackController
 
   def index(conn, _params) do
-    files = Valuables.list_files()
+    user_id = conn.assigns.current_user.id
+    files = Valuables.list_files(user_id)
     render(conn, "index.json", files: files)
   end
 
   def create(conn, %{"file" => file_params}) do
-    with {:ok, %File{} = file} <- Valuables.create_file(file_params) do
+    user_id = conn.assigns.current_user.id
+    with {:ok, %File{} = file} <- Valuables.create_file(file_params, user_id) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.file_path(conn, :show, file))

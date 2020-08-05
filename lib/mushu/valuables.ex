@@ -12,14 +12,15 @@ defmodule Mushu.Valuables do
   Returns the list of files.
 
   ## Examples
-
       iex> list_files()
       [%File{}, ...]
-
   """
-  def list_files do
-    Repo.all(File)
+
+  def list_files(user_id) do
+    File |> where(user_id: ^user_id) |> Repo.all()
   end
+
+
 
   @doc """
   Gets a single file.
@@ -49,9 +50,11 @@ defmodule Mushu.Valuables do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_file(attrs \\ %{}) do
-    %File{}
+  def create_file(attrs \\ %{}, user_id) do
+    IO.inspect user_id
+    %File{user_id: user_id}
     |> File.changeset(attrs)
+    # |> Ecto.Changeset.put_assoc(:user_id, user_id)
     |> Repo.insert()
   end
 
