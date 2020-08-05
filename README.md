@@ -1,5 +1,7 @@
 # Mushu
 
+![Elixir CI](https://github.com/TimPrd/Mushu/workflows/Elixir%20CI/badge.svg?branch=master)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
